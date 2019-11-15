@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CategoriadependenteCreateDlg" widgetVar="CategoriadependenteCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateCategoriadependenteTitle}">
+            <h:form id="CategoriadependenteCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{categoriadependenteController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateCategoriadependenteLabel_catdepCodigo}" for="catdepCodigo" />
+                        <p:inputText id="catdepCodigo" value="#{categoriadependenteController.selected.catdepCodigo}" title="#{bundle.CreateCategoriadependenteTitle_catdepCodigo}" required="true" requiredMessage="#{bundle.CreateCategoriadependenteRequiredMessage_catdepCodigo}"/>
+                        <p:outputLabel value="#{bundle.CreateCategoriadependenteLabel_catdepNome}" for="catdepNome" />
+                        <p:inputText id="catdepNome" value="#{categoriadependenteController.selected.catdepNome}" title="#{bundle.CreateCategoriadependenteTitle_catdepNome}" required="true" requiredMessage="#{bundle.CreateCategoriadependenteRequiredMessage_catdepNome}"/>
+                        <p:outputLabel value="#{bundle.CreateCategoriadependenteLabel_catdepDescricao}" for="catdepDescricao" />
+                        <p:inputText id="catdepDescricao" value="#{categoriadependenteController.selected.catdepDescricao}" title="#{bundle.CreateCategoriadependenteTitle_catdepDescricao}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{categoriadependenteController.create}" value="#{bundle.Save}" update="display,:CategoriadependenteListForm:datalist,:growl" oncomplete="handleSubmit(args,'CategoriadependenteCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CategoriadependenteCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

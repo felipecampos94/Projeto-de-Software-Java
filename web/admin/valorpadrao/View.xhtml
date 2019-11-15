@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ValorpadraoViewDlg" widgetVar="ValorpadraoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewValorpadraoTitle}">
+            <h:form id="ValorpadraoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{valorpadraoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewValorpadraoLabel_vlrCodigo}"/>
+                        <h:outputText value="#{valorpadraoController.selected.vlrCodigo}" title="#{bundle.ViewValorpadraoTitle_vlrCodigo}"/>
+                        <h:outputText value="#{bundle.ViewValorpadraoLabel_vlrNome}"/>
+                        <h:outputText value="#{valorpadraoController.selected.vlrNome}" title="#{bundle.ViewValorpadraoTitle_vlrNome}"/>
+                        <h:outputText value="#{bundle.ViewValorpadraoLabel_vlrValor}"/>
+                        <h:outputText value="#{valorpadraoController.selected.vlrValor}" title="#{bundle.ViewValorpadraoTitle_vlrValor}"/>
+                        <h:outputText value="#{bundle.ViewValorpadraoLabel_vlrDescricao}"/>
+                        <h:outputText value="#{valorpadraoController.selected.vlrDescricao}" title="#{bundle.ViewValorpadraoTitle_vlrDescricao}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ValorpadraoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

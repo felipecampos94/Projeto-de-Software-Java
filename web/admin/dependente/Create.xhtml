@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DependenteCreateDlg" widgetVar="DependenteCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateDependenteTitle}">
+            <h:form id="DependenteCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{dependenteController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateDependenteLabel_depCodigo}" for="depCodigo" />
+                        <p:inputText id="depCodigo" value="#{dependenteController.selected.depCodigo}" title="#{bundle.CreateDependenteTitle_depCodigo}" required="true" requiredMessage="#{bundle.CreateDependenteRequiredMessage_depCodigo}"/>
+                        <p:outputLabel value="#{bundle.CreateDependenteLabel_depNome}" for="depNome" />
+                        <p:inputText id="depNome" value="#{dependenteController.selected.depNome}" title="#{bundle.CreateDependenteTitle_depNome}" required="true" requiredMessage="#{bundle.CreateDependenteRequiredMessage_depNome}"/>
+                        <p:outputLabel value="#{bundle.CreateDependenteLabel_depDatanascimento}" for="depDatanascimento" />
+                        <p:calendar id="depDatanascimento" pattern="MM/dd/yyyy" value="#{dependenteController.selected.depDatanascimento}" title="#{bundle.EditDependenteTitle_depDatanascimento}" required="true" requiredMessage="#{bundle.EditDependenteRequiredMessage_depDatanascimento}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateDependenteLabel_depRua}" for="depRua" />
+                        <p:inputText id="depRua" value="#{dependenteController.selected.depRua}" title="#{bundle.CreateDependenteTitle_depRua}" />
+                        <p:outputLabel value="#{bundle.CreateDependenteLabel_depNumero}" for="depNumero" />
+                        <p:inputText id="depNumero" value="#{dependenteController.selected.depNumero}" title="#{bundle.CreateDependenteTitle_depNumero}" />
+                        <p:outputLabel value="#{bundle.CreateDependenteLabel_depBairro}" for="depBairro" />
+                        <p:inputText id="depBairro" value="#{dependenteController.selected.depBairro}" title="#{bundle.CreateDependenteTitle_depBairro}" />
+                        <p:outputLabel value="#{bundle.CreateDependenteLabel_depTelefone}" for="depTelefone" />
+                        <p:inputText id="depTelefone" value="#{dependenteController.selected.depTelefone}" title="#{bundle.CreateDependenteTitle_depTelefone}" />
+                        <p:outputLabel value="#{bundle.CreateDependenteLabel_depSexo}" for="depSexo" />
+                        <p:inputText id="depSexo" value="#{dependenteController.selected.depSexo}" title="#{bundle.CreateDependenteTitle_depSexo}" />
+                        <p:outputLabel value="#{bundle.CreateDependenteLabel_depCidade}" for="depCidade" />
+                        <p:selectOneMenu id="depCidade" value="#{dependenteController.selected.depCidade}" >
+                            <f:selectItems value="#{cidadeController.itemsAvailableSelectOne}"
+                                           var="depCidadeItem"
+                                           itemValue="#{depCidadeItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateDependenteLabel_depPessoa}" for="depPessoa" />
+                        <p:selectOneMenu id="depPessoa" value="#{dependenteController.selected.depPessoa}" >
+                            <f:selectItems value="#{pessoaController.itemsAvailableSelectOne}"
+                                           var="depPessoaItem"
+                                           itemValue="#{depPessoaItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{dependenteController.create}" value="#{bundle.Save}" update="display,:DependenteListForm:datalist,:growl" oncomplete="handleSubmit(args,'DependenteCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DependenteCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

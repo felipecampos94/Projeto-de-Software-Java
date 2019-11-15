@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PessoaViewDlg" widgetVar="PessoaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewPessoaTitle}" showEffect="blind" hideEffect="explode">
+            <h:form id="PessoaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="4" rendered="#{pessoaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewPessoaLabel_pesCodigo}"/>
+                        <h:outputText value="#{pessoaController.selected.pesCodigo}" title="#{bundle.ViewPessoaTitle_pesCodigo}"/>
+                        <h:outputText value="#{bundle.ViewPessoaLabel_pesNome}"/>
+                        <h:outputText value="#{pessoaController.selected.pesNome}" title="#{bundle.ViewPessoaTitle_pesNome}"/>
+                        <h:outputText value="#{bundle.ViewPessoaLabel_pesDatanascimento}"/>
+                        <h:outputText value="#{pessoaController.selected.pesDatanascimento}" title="#{bundle.ViewPessoaTitle_pesDatanascimento}">
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewPessoaLabel_pesRua}"/>
+                        <h:outputText value="#{pessoaController.selected.pesRua}" title="#{bundle.ViewPessoaTitle_pesRua}"/>
+                        <h:outputText value="#{bundle.ViewPessoaLabel_pesNumero}"/>
+                        <h:outputText value="#{pessoaController.selected.pesNumero}" title="#{bundle.ViewPessoaTitle_pesNumero}"/>
+                        <h:outputText value="#{bundle.ViewPessoaLabel_pesBairro}"/>
+                        <h:outputText value="#{pessoaController.selected.pesBairro}" title="#{bundle.ViewPessoaTitle_pesBairro}"/>
+                        <h:outputText value="#{bundle.ViewPessoaLabel_pesTelefone}"/>
+                        <h:outputText value="#{pessoaController.selected.pesTelefone}" title="#{bundle.ViewPessoaTitle_pesTelefone}"/>
+                        <h:outputText value="#{bundle.ViewPessoaLabel_pesSexo}"/>
+                        <h:outputText value="#{pessoaController.selected.pesSexo}" title="#{bundle.ViewPessoaTitle_pesSexo}"/>
+                        <h:outputText value="#{bundle.ViewPessoaLabel_pesCpf}"/>
+                        <h:outputText value="#{pessoaController.selected.pesCpf}" title="#{bundle.ViewPessoaTitle_pesCpf}"/>
+                        <h:outputText value="#{bundle.ViewPessoaLabel_pesRg}"/>
+                        <h:outputText value="#{pessoaController.selected.pesRg}" title="#{bundle.ViewPessoaTitle_pesRg}"/>
+                        <h:outputText value="#{bundle.ViewPessoaLabel_pesEmail}"/>
+                        <h:outputText value="#{pessoaController.selected.pesEmail}" title="#{bundle.ViewPessoaTitle_pesEmail}"/>
+                        <h:outputText value="#{bundle.ViewPessoaLabel_pesProfissao}"/>
+                        <h:outputText value="#{pessoaController.selected.pesProfissao}" title="#{bundle.ViewPessoaTitle_pesProfissao}"/>
+                        <h:outputText value="#{bundle.ViewPessoaLabel_pesAtivo}"/>
+                        <p:selectBooleanCheckbox value="#{pessoaController.selected.pesAtivo}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewPessoaLabel_pesCategoria}"/>
+                        <h:outputText value="#{pessoaController.selected.pesCategoria.catsocNome}" title="#{bundle.ViewPessoaTitle_pesCategoria}"/>
+                        <h:outputText value="#{bundle.ViewPessoaLabel_pesCidade}"/>
+                        <h:outputText value="#{pessoaController.selected.pesCidade.cidNome}" title="#{bundle.ViewPessoaTitle_pesCidade}"/>
+                        <h:outputText value="#{bundle.ViewPessoaLabel_pesPiquete}"/>
+                        <h:outputText value="#{pessoaController.selected.pesPiquete.piqNome}" title="#{bundle.ViewPessoaTitle_pesPiquete}"/>
+                        <h:outputText value="#{bundle.ViewPessoaLabel_pesValor}"/>
+                        <h:outputText value="#{pessoaController.selected.pesValor.vlrValor}" title="#{bundle.ViewPessoaTitle_pesValor}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="PessoaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

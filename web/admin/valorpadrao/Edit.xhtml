@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ValorpadraoEditDlg" widgetVar="ValorpadraoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditValorpadraoTitle}">
+            <h:form id="ValorpadraoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{valorpadraoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditValorpadraoLabel_vlrCodigo}" for="vlrCodigo" />
+                        <p:inputText id="vlrCodigo" value="#{valorpadraoController.selected.vlrCodigo}" title="#{bundle.EditValorpadraoTitle_vlrCodigo}" required="true" requiredMessage="#{bundle.EditValorpadraoRequiredMessage_vlrCodigo}"/>
+                        <p:outputLabel value="#{bundle.EditValorpadraoLabel_vlrNome}" for="vlrNome" />
+                        <p:inputText id="vlrNome" value="#{valorpadraoController.selected.vlrNome}" title="#{bundle.EditValorpadraoTitle_vlrNome}" required="true" requiredMessage="#{bundle.EditValorpadraoRequiredMessage_vlrNome}"/>
+                        <p:outputLabel value="#{bundle.EditValorpadraoLabel_vlrValor}" for="vlrValor" />
+                        <p:inputText id="vlrValor" value="#{valorpadraoController.selected.vlrValor}" title="#{bundle.EditValorpadraoTitle_vlrValor}" required="true" requiredMessage="#{bundle.EditValorpadraoRequiredMessage_vlrValor}"/>
+                        <p:outputLabel value="#{bundle.EditValorpadraoLabel_vlrDescricao}" for="vlrDescricao" />
+                        <p:inputText id="vlrDescricao" value="#{valorpadraoController.selected.vlrDescricao}" title="#{bundle.EditValorpadraoTitle_vlrDescricao}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{valorpadraoController.update}" value="#{bundle.Save}" update="display,:ValorpadraoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ValorpadraoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ValorpadraoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

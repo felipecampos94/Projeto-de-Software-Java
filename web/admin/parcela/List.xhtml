@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListParcelaTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="ParcelaListForm">
+                <p:panel header="#{bundle.ListParcelaTitle}">
+                    <p:dataTable id="datalist" value="#{parcelaController.items}" var="item"
+                                 selectionMode="single" selection="#{parcelaController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.parcCodigo}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListParcelaTitle_parcCodigo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.parcCodigo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListParcelaTitle_parcDatapagamento}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.parcDatapagamento}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListParcelaTitle_parcAnoreferencia}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.parcAnoreferencia}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListParcelaTitle_parcValortotal}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.parcValortotal}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListParcelaTitle_parcQtdparcela}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.parcQtdparcela}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListParcelaTitle_parcDatavencimento}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.parcDatavencimento}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListParcelaTitle_parcValorparcela}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.parcValorparcela}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListParcelaTitle_parcSituacao}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.parcSituacao}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListParcelaTitle_parcFormapagamento}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.parcFormapagamento}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListParcelaTitle_parcLote}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.parcLote}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListParcelaTitle_parcPessoa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.parcPessoa}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{parcelaController.prepareCreate}" update=":ParcelaCreateForm" oncomplete="PF('ParcelaCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":ParcelaViewForm" oncomplete="PF('ParcelaViewDialog').show()" disabled="#{empty parcelaController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":ParcelaEditForm" oncomplete="PF('ParcelaEditDialog').show()" disabled="#{empty parcelaController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{parcelaController.destroy}" update=":growl,datalist" disabled="#{empty parcelaController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

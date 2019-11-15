@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CategoriadependenteEditDlg" widgetVar="CategoriadependenteEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditCategoriadependenteTitle}">
+            <h:form id="CategoriadependenteEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{categoriadependenteController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditCategoriadependenteLabel_catdepCodigo}" for="catdepCodigo" />
+                        <p:inputText id="catdepCodigo" value="#{categoriadependenteController.selected.catdepCodigo}" title="#{bundle.EditCategoriadependenteTitle_catdepCodigo}" required="true" requiredMessage="#{bundle.EditCategoriadependenteRequiredMessage_catdepCodigo}"/>
+                        <p:outputLabel value="#{bundle.EditCategoriadependenteLabel_catdepNome}" for="catdepNome" />
+                        <p:inputText id="catdepNome" value="#{categoriadependenteController.selected.catdepNome}" title="#{bundle.EditCategoriadependenteTitle_catdepNome}" required="true" requiredMessage="#{bundle.EditCategoriadependenteRequiredMessage_catdepNome}"/>
+                        <p:outputLabel value="#{bundle.EditCategoriadependenteLabel_catdepDescricao}" for="catdepDescricao" />
+                        <p:inputText id="catdepDescricao" value="#{categoriadependenteController.selected.catdepDescricao}" title="#{bundle.EditCategoriadependenteTitle_catdepDescricao}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{categoriadependenteController.update}" value="#{bundle.Save}" update="display,:CategoriadependenteListForm:datalist,:growl" oncomplete="handleSubmit(args, 'CategoriadependenteEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CategoriadependenteEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

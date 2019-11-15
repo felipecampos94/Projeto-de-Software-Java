@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ParcelaViewDlg" widgetVar="ParcelaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewParcelaTitle}" showEffect="blind" hideEffect="explode">
+            <h:form id="ParcelaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{parcelaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewParcelaLabel_parcCodigo}"/>
+                        <h:outputText value="#{parcelaController.selected.parcCodigo}" title="#{bundle.ViewParcelaTitle_parcCodigo}"/>
+                        <h:outputText value="#{bundle.ViewParcelaLabel_parcDatapagamento}"/>
+                        <h:outputText value="#{parcelaController.selected.parcDatapagamento}" title="#{bundle.ViewParcelaTitle_parcDatapagamento}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewParcelaLabel_parcAnoreferencia}"/>
+                        <h:outputText value="#{parcelaController.selected.parcAnoreferencia}" title="#{bundle.ViewParcelaTitle_parcAnoreferencia}"/>
+                        <h:outputText value="#{bundle.ViewParcelaLabel_parcValortotal}"/>
+                        <h:outputText value="#{parcelaController.selected.parcValortotal}" title="#{bundle.ViewParcelaTitle_parcValortotal}"/>
+                        <h:outputText value="#{bundle.ViewParcelaLabel_parcQtdparcela}"/>
+                        <h:outputText value="#{parcelaController.selected.parcQtdparcela}" title="#{bundle.ViewParcelaTitle_parcQtdparcela}"/>
+                        <h:outputText value="#{bundle.ViewParcelaLabel_parcDatavencimento}"/>
+                        <h:outputText value="#{parcelaController.selected.parcDatavencimento}" title="#{bundle.ViewParcelaTitle_parcDatavencimento}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewParcelaLabel_parcValorparcela}"/>
+                        <h:outputText value="#{parcelaController.selected.parcValorparcela}" title="#{bundle.ViewParcelaTitle_parcValorparcela}"/>
+                        <h:outputText value="#{bundle.ViewParcelaLabel_parcSituacao}"/>
+                        <h:outputText value="#{parcelaController.selected.parcSituacao}" title="#{bundle.ViewParcelaTitle_parcSituacao}"/>
+                        <h:outputText value="#{bundle.ViewParcelaLabel_parcFormapagamento}"/>
+                        <h:outputText value="#{parcelaController.selected.parcFormapagamento}" title="#{bundle.ViewParcelaTitle_parcFormapagamento}"/>
+                        <h:outputText value="#{bundle.ViewParcelaLabel_parcLote}"/>
+                        <h:outputText value="#{parcelaController.selected.parcLote}" title="#{bundle.ViewParcelaTitle_parcLote}"/>
+                        <h:outputText value="#{bundle.ViewParcelaLabel_parcPessoa}"/>
+                        <h:outputText value="#{parcelaController.selected.parcPessoa}" title="#{bundle.ViewParcelaTitle_parcPessoa}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ParcelaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

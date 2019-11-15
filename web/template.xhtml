@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title><ui:insert name="title">Default Title</ui:insert></title>
+        <h:outputStylesheet library="css" name="jsfcrud.css"/>
+        <h:outputScript library="js" name="jsfcrud.js"/>
+    </h:head>
+
+    <h:body>
+
+        <p:growl id="growl" life="3000" />
+
+        <p:layout fullPage="true">
+            <p:layoutUnit position="north" size="65" header="#{bundle.AppName}">
+                <h:form id="menuForm">
+                    <p:menubar>
+                        <p:menuitem value="#{bundle.Home}" outcome="/admin/parcela/List.xhtml" icon="ui-icon-home"/>
+                        <p:submenu label="#{bundle.Maintenance}">
+                            <p:menuitem value="Categoriadependente" outcome="/admin/categoriadependente/List.xhtml" />
+                            <p:menuitem value="Categoriasocio" outcome="/admin/categoriasocio/List.xhtml" />
+                            <p:menuitem value="Cidade" outcome="/admin/cidade/List.xhtml" />
+                            <p:menuitem value="Ctg" outcome="/admin/ctg/List.xhtml" />
+                            <p:menuitem value="Dependente" outcome="/admin/dependente/List.xhtml" />
+                            <p:menuitem value="Formapagamento" outcome="/admin/formapagamento/List.xhtml" />
+                            <p:menuitem value="Lote" outcome="/admin/lote/List.xhtml" />
+                            <p:menuitem value="Parcela" outcome="/admin/parcela/List.xhtml" />
+                            <p:menuitem value="Sócio" outcome="/admin/pessoa/List.xhtml" />
+                            <p:menuitem value="Piquete" outcome="/admin/piquete/List.xhtml" />
+                            <p:menuitem value="Rua" outcome="/admin/rua/List.xhtml" />
+                            <p:menuitem value="Usuario" outcome="/admin/usuario/List.xhtml" />
+                            <p:menuitem value="Valorpadrao" outcome="/admin/valorpadrao/List.xhtml" />
+                        </p:submenu>
+                    </p:menubar>
+                </h:form>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="south" size="60">
+                <ui:insert name="footer"/>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center">
+                <ui:insert name="body"/>
+            </p:layoutUnit>
+
+        </p:layout>
+
+    </h:body>
+
+</html>

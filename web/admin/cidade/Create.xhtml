@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CidadeCreateDlg" widgetVar="CidadeCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateCidadeTitle}">
+            <h:form id="CidadeCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cidadeController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateCidadeLabel_cidCodigo}" for="cidCodigo" />
+                        <p:inputText id="cidCodigo" value="#{cidadeController.selected.cidCodigo}" title="#{bundle.CreateCidadeTitle_cidCodigo}" required="true" requiredMessage="#{bundle.CreateCidadeRequiredMessage_cidCodigo}"/>
+                        <p:outputLabel value="#{bundle.CreateCidadeLabel_cidNome}" for="cidNome" />
+                        <p:inputText id="cidNome" value="#{cidadeController.selected.cidNome}" title="#{bundle.CreateCidadeTitle_cidNome}" required="true" requiredMessage="#{bundle.CreateCidadeRequiredMessage_cidNome}"/>
+                        <p:outputLabel value="#{bundle.CreateCidadeLabel_cidSiglaestado}" for="cidSiglaestado" />
+                        <p:inputText id="cidSiglaestado" value="#{cidadeController.selected.cidSiglaestado}" title="#{bundle.CreateCidadeTitle_cidSiglaestado}" required="true" requiredMessage="#{bundle.CreateCidadeRequiredMessage_cidSiglaestado}"/>
+                        <p:outputLabel value="#{bundle.CreateCidadeLabel_cidCep}" for="cidCep" />
+                        <p:inputText id="cidCep" value="#{cidadeController.selected.cidCep}" title="#{bundle.CreateCidadeTitle_cidCep}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{cidadeController.create}" value="#{bundle.Save}" update="display,:CidadeListForm:datalist,:growl" oncomplete="handleSubmit(args,'CidadeCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CidadeCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

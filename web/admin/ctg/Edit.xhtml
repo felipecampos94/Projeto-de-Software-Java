@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CtgEditDlg" widgetVar="CtgEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditCtgTitle}">
+            <h:form id="CtgEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{ctgController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditCtgLabel_ctgCodigo}" for="ctgCodigo" />
+                        <p:inputText id="ctgCodigo" value="#{ctgController.selected.ctgCodigo}" title="#{bundle.EditCtgTitle_ctgCodigo}" required="true" requiredMessage="#{bundle.EditCtgRequiredMessage_ctgCodigo}"/>
+                        <p:outputLabel value="#{bundle.EditCtgLabel_ctgNome}" for="ctgNome" />
+                        <p:inputText id="ctgNome" value="#{ctgController.selected.ctgNome}" title="#{bundle.EditCtgTitle_ctgNome}" required="true" requiredMessage="#{bundle.EditCtgRequiredMessage_ctgNome}"/>
+                        <p:outputLabel value="#{bundle.EditCtgLabel_ctgCnpj}" for="ctgCnpj" />
+                        <p:inputText id="ctgCnpj" value="#{ctgController.selected.ctgCnpj}" title="#{bundle.EditCtgTitle_ctgCnpj}" required="true" requiredMessage="#{bundle.EditCtgRequiredMessage_ctgCnpj}"/>
+                        <p:outputLabel value="#{bundle.EditCtgLabel_ctgRua}" for="ctgRua" />
+                        <p:inputText id="ctgRua" value="#{ctgController.selected.ctgRua}" title="#{bundle.EditCtgTitle_ctgRua}" />
+                        <p:outputLabel value="#{bundle.EditCtgLabel_ctgNumero}" for="ctgNumero" />
+                        <p:inputText id="ctgNumero" value="#{ctgController.selected.ctgNumero}" title="#{bundle.EditCtgTitle_ctgNumero}" />
+                        <p:outputLabel value="#{bundle.EditCtgLabel_ctgBairro}" for="ctgBairro" />
+                        <p:inputText id="ctgBairro" value="#{ctgController.selected.ctgBairro}" title="#{bundle.EditCtgTitle_ctgBairro}" />
+                        <p:outputLabel value="#{bundle.EditCtgLabel_ctgComplemento}" for="ctgComplemento" />
+                        <p:inputText id="ctgComplemento" value="#{ctgController.selected.ctgComplemento}" title="#{bundle.EditCtgTitle_ctgComplemento}" />
+                        <p:outputLabel value="#{bundle.EditCtgLabel_ctgTelefone}" for="ctgTelefone" />
+                        <p:inputText id="ctgTelefone" value="#{ctgController.selected.ctgTelefone}" title="#{bundle.EditCtgTitle_ctgTelefone}" />
+                        <p:outputLabel value="#{bundle.EditCtgLabel_ctgEmail}" for="ctgEmail" />
+                        <p:inputText id="ctgEmail" value="#{ctgController.selected.ctgEmail}" title="#{bundle.EditCtgTitle_ctgEmail}" />
+                        <p:outputLabel value="#{bundle.EditCtgLabel_ctgCidade}" for="ctgCidade" />
+                        <p:selectOneMenu id="ctgCidade" value="#{ctgController.selected.ctgCidade}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{cidadeController.itemsAvailableSelectOne}"
+                                           var="ctgCidadeItem"
+                                           itemValue="#{ctgCidadeItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{ctgController.update}" value="#{bundle.Save}" update="display,:CtgListForm:datalist,:growl" oncomplete="handleSubmit(args, 'CtgEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CtgEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FormapagamentoCreateDlg" widgetVar="FormapagamentoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateFormapagamentoTitle}">
+            <h:form id="FormapagamentoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{formapagamentoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateFormapagamentoLabel_fpgCodigo}" for="fpgCodigo" />
+                        <p:inputText id="fpgCodigo" value="#{formapagamentoController.selected.fpgCodigo}" title="#{bundle.CreateFormapagamentoTitle_fpgCodigo}" required="true" requiredMessage="#{bundle.CreateFormapagamentoRequiredMessage_fpgCodigo}"/>
+                        <p:outputLabel value="#{bundle.CreateFormapagamentoLabel_fpgNome}" for="fpgNome" />
+                        <p:inputText id="fpgNome" value="#{formapagamentoController.selected.fpgNome}" title="#{bundle.CreateFormapagamentoTitle_fpgNome}" required="true" requiredMessage="#{bundle.CreateFormapagamentoRequiredMessage_fpgNome}"/>
+                        <p:outputLabel value="#{bundle.CreateFormapagamentoLabel_fpgQtdmaxparcela}" for="fpgQtdmaxparcela" />
+                        <p:inputText id="fpgQtdmaxparcela" value="#{formapagamentoController.selected.fpgQtdmaxparcela}" title="#{bundle.CreateFormapagamentoTitle_fpgQtdmaxparcela}" required="true" requiredMessage="#{bundle.CreateFormapagamentoRequiredMessage_fpgQtdmaxparcela}"/>
+                        <p:outputLabel value="#{bundle.CreateFormapagamentoLabel_fpgIntervaloparcela}" for="fpgIntervaloparcela" />
+                        <p:inputText id="fpgIntervaloparcela" value="#{formapagamentoController.selected.fpgIntervaloparcela}" title="#{bundle.CreateFormapagamentoTitle_fpgIntervaloparcela}" required="true" requiredMessage="#{bundle.CreateFormapagamentoRequiredMessage_fpgIntervaloparcela}"/>
+                        <p:outputLabel value="#{bundle.CreateFormapagamentoLabel_fpgPrimeiraparcela}" for="fpgPrimeiraparcela" />
+                        <p:inputText id="fpgPrimeiraparcela" value="#{formapagamentoController.selected.fpgPrimeiraparcela}" title="#{bundle.CreateFormapagamentoTitle_fpgPrimeiraparcela}" required="true" requiredMessage="#{bundle.CreateFormapagamentoRequiredMessage_fpgPrimeiraparcela}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{formapagamentoController.create}" value="#{bundle.Save}" update="display,:FormapagamentoListForm:datalist,:growl" oncomplete="handleSubmit(args,'FormapagamentoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="FormapagamentoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

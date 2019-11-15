@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="RuaEditDlg" widgetVar="RuaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditRuaTitle}">
+            <h:form id="RuaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{ruaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditRuaLabel_ruaCodigo}" for="ruaCodigo" />
+                        <p:inputText id="ruaCodigo" value="#{ruaController.selected.ruaCodigo}" title="#{bundle.EditRuaTitle_ruaCodigo}" required="true" requiredMessage="#{bundle.EditRuaRequiredMessage_ruaCodigo}"/>
+                        <p:outputLabel value="#{bundle.EditRuaLabel_ruaNome}" for="ruaNome" />
+                        <p:inputText id="ruaNome" value="#{ruaController.selected.ruaNome}" title="#{bundle.EditRuaTitle_ruaNome}" required="true" requiredMessage="#{bundle.EditRuaRequiredMessage_ruaNome}"/>
+                        <p:outputLabel value="#{bundle.EditRuaLabel_ruaDescricao}" for="ruaDescricao" />
+                        <p:inputText id="ruaDescricao" value="#{ruaController.selected.ruaDescricao}" title="#{bundle.EditRuaTitle_ruaDescricao}" />
+                        <p:outputLabel value="#{bundle.EditRuaLabel_ruaCtg}" for="ruaCtg" />
+                        <p:selectOneMenu id="ruaCtg" value="#{ruaController.selected.ruaCtg}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{ctgController.itemsAvailableSelectOne}"
+                                           var="ruaCtgItem"
+                                           itemValue="#{ruaCtgItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{ruaController.update}" value="#{bundle.Save}" update="display,:RuaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'RuaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="RuaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

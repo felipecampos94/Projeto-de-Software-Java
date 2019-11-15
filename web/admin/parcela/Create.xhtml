@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ParcelaCreateDlg" widgetVar="ParcelaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateParcelaTitle}" showEffect="blind" hideEffect="explode">
+            <h:form id="ParcelaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{parcelaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateParcelaLabel_parcDatapagamento}" for="parcDatapagamento" />
+                        <p:calendar id="parcDatapagamento" pattern="dd/MM/yyyy" value="#{parcelaController.selected.parcDatapagamento}" title="#{bundle.EditParcelaTitle_parcDatapagamento}" required="true" requiredMessage="#{bundle.EditParcelaRequiredMessage_parcDatapagamento}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateParcelaLabel_parcAnoreferencia}" for="parcAnoreferencia" />
+                        <p:inputText id="parcAnoreferencia" value="#{parcelaController.selected.parcAnoreferencia}" title="#{bundle.CreateParcelaTitle_parcAnoreferencia}" required="true" requiredMessage="#{bundle.CreateParcelaRequiredMessage_parcAnoreferencia}"/>
+                        <p:outputLabel value="#{bundle.CreateParcelaLabel_parcValortotal}" for="parcValortotal" />
+                        <p:inputText id="parcValortotal" value="#{parcelaController.selected.parcValortotal}" title="#{bundle.CreateParcelaTitle_parcValortotal}" />
+                        <p:outputLabel value="#{bundle.CreateParcelaLabel_parcQtdparcela}" for="parcQtdparcela" />
+                        <p:inputText id="parcQtdparcela" value="#{parcelaController.selected.parcQtdparcela}" title="#{bundle.CreateParcelaTitle_parcQtdparcela}" />
+                        <p:outputLabel value="#{bundle.CreateParcelaLabel_parcDatavencimento}" for="parcDatavencimento" />
+                        <p:calendar id="parcDatavencimento" pattern="dd/MM/yyyy" value="#{parcelaController.selected.parcDatavencimento}" title="#{bundle.EditParcelaTitle_parcDatavencimento}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateParcelaLabel_parcValorparcela}" for="parcValorparcela" />
+                        <p:inputText id="parcValorparcela" value="#{parcelaController.selected.parcValorparcela}" title="#{bundle.CreateParcelaTitle_parcValorparcela}" />
+                        <p:outputLabel value="#{bundle.CreateParcelaLabel_parcSituacao}" for="parcSituacao" />
+                        <p:inputText id="parcSituacao" value="#{parcelaController.selected.parcSituacao}" title="#{bundle.CreateParcelaTitle_parcSituacao}" />
+                        <p:outputLabel value="#{bundle.CreateParcelaLabel_parcFormapagamento}" for="parcFormapagamento" />
+                        <p:selectOneMenu id="parcFormapagamento" value="#{parcelaController.selected.parcFormapagamento}" required="true" requiredMessage="#{bundle.EditParcelaRequiredMessage_parcFormapagamento}">
+                            <f:selectItems value="#{formapagamentoController.itemsAvailableSelectOne}"
+                                           var="parcFormapagamentoItem"
+                                           itemValue="#{parcFormapagamentoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateParcelaLabel_parcLote}" for="parcLote" />
+                        <p:selectOneMenu id="parcLote" value="#{parcelaController.selected.parcLote}" >
+                            <f:selectItems value="#{loteController.itemsAvailableSelectOne}"
+                                           var="parcLoteItem"
+                                           itemValue="#{parcLoteItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateParcelaLabel_parcPessoa}" for="parcPessoa" />
+                        <p:selectOneMenu id="parcPessoa" value="#{parcelaController.selected.parcPessoa}" >
+                            <f:selectItems value="#{pessoaController.itemsAvailableSelectOne}"
+                                           var="parcPessoaItem"
+                                           itemValue="#{parcPessoaItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{parcelaController.create}" value="#{bundle.Save}" update="display,:ParcelaListForm:datalist,:growl" oncomplete="handleSubmit(args,'ParcelaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ParcelaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

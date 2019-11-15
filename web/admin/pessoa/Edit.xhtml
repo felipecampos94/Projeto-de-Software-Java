@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PessoaEditDlg" widgetVar="PessoaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditPessoaTitle}" showEffect="blind" hideEffect="explode">
+            <h:form id="PessoaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="4" rendered="#{pessoaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditPessoaLabel_pesCodigo}" for="pesCodigo" />
+                        <p:inputText id="pesCodigo" value="#{pessoaController.selected.pesCodigo}" title="#{bundle.EditPessoaTitle_pesCodigo}" required="true" disabled="true" requiredMessage="#{bundle.EditPessoaRequiredMessage_pesCodigo}"/>
+                        <p:outputLabel value="#{bundle.EditPessoaLabel_pesNome}" for="pesNome" />
+                        <p:inputText id="pesNome" value="#{pessoaController.selected.pesNome}" title="#{bundle.EditPessoaTitle_pesNome}" required="true" requiredMessage="#{bundle.EditPessoaRequiredMessage_pesNome}"/>
+                        <p:outputLabel value="#{bundle.EditPessoaLabel_pesDatanascimento}" for="pesDatanascimento" />
+                        <p:calendar id="pesDatanascimento" pattern="dd/MM/yyyy" value="#{pessoaController.selected.pesDatanascimento}" title="#{bundle.EditPessoaTitle_pesDatanascimento}" required="true" requiredMessage="#{bundle.EditPessoaRequiredMessage_pesDatanascimento}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditPessoaLabel_pesRua}" for="pesRua" />
+                        <p:inputText id="pesRua" value="#{pessoaController.selected.pesRua}" title="#{bundle.EditPessoaTitle_pesRua}" />
+                        <p:outputLabel value="#{bundle.EditPessoaLabel_pesNumero}" for="pesNumero" />
+                        <p:inputText id="pesNumero" value="#{pessoaController.selected.pesNumero}" title="#{bundle.EditPessoaTitle_pesNumero}" />
+                        <p:outputLabel value="#{bundle.EditPessoaLabel_pesBairro}" for="pesBairro" />
+                        <p:inputText id="pesBairro" value="#{pessoaController.selected.pesBairro}" title="#{bundle.EditPessoaTitle_pesBairro}" />
+                        <p:outputLabel value="#{bundle.EditPessoaLabel_pesTelefone}" for="pesTelefone" />
+                        <p:inputText id="pesTelefone" value="#{pessoaController.selected.pesTelefone}" title="#{bundle.EditPessoaTitle_pesTelefone}"/>
+                        <p:outputLabel value="#{bundle.EditPessoaLabel_pesSexo}" for="pesSexo" />
+                        <p:inputText id="pesSexo" value="#{pessoaController.selected.pesSexo}" title="#{bundle.EditPessoaTitle_pesSexo}" />
+                        <p:outputLabel value="#{bundle.EditPessoaLabel_pesCpf}" for="pesCpf" />
+                        <p:inputText id="pesCpf" value="#{pessoaController.selected.pesCpf}" title="#{bundle.EditPessoaTitle_pesCpf}" required="true" requiredMessage="#{bundle.EditPessoaRequiredMessage_pesCpf}"/>
+                        <p:outputLabel value="#{bundle.EditPessoaLabel_pesRg}" for="pesRg" />
+                        <p:inputText id="pesRg" value="#{pessoaController.selected.pesRg}" title="#{bundle.EditPessoaTitle_pesRg}" required="true" requiredMessage="#{bundle.EditPessoaRequiredMessage_pesRg}"/>
+                        <p:outputLabel value="#{bundle.EditPessoaLabel_pesEmail}" for="pesEmail" />
+                        <p:inputText id="pesEmail" value="#{pessoaController.selected.pesEmail}" title="#{bundle.EditPessoaTitle_pesEmail}" />
+                        <p:outputLabel value="#{bundle.EditPessoaLabel_pesProfissao}" for="pesProfissao" />
+                        <p:inputText id="pesProfissao" value="#{pessoaController.selected.pesProfissao}" title="#{bundle.EditPessoaTitle_pesProfissao}" />
+                        <p:outputLabel value="#{bundle.EditPessoaLabel_pesAtivo}" for="pesAtivo" />
+                        <p:selectBooleanCheckbox id="pesAtivo" value="#{pessoaController.selected.pesAtivo}" />
+                        <p:outputLabel value="#{bundle.EditPessoaLabel_pesCategoria}" for="pesCategoria" />
+                        <p:selectOneMenu id="pesCategoria" value="#{pessoaController.selected.pesCategoria}" required="true" requiredMessage="#{bundle.EditPessoaRequiredMessage_pesCategoria}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{categoriasocioController.itemsAvailableSelectOne}"
+                                           var="pesCategoriaItem"
+                                           itemValue="#{pesCategoriaItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditPessoaLabel_pesCidade}" for="pesCidade" />
+                        <p:selectOneMenu id="pesCidade" value="#{pessoaController.selected.pesCidade}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{cidadeController.itemsAvailableSelectOne}"
+                                           var="pesCidadeItem"
+                                           itemValue="#{pesCidadeItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditPessoaLabel_pesPiquete}" for="pesPiquete" />
+                        <p:selectOneMenu id="pesPiquete" value="#{pessoaController.selected.pesPiquete}" required="true" requiredMessage="#{bundle.EditPessoaRequiredMessage_pesPiquete}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{piqueteController.itemsAvailableSelectOne}"
+                                           var="pesPiqueteItem"
+                                           itemValue="#{pesPiqueteItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditPessoaLabel_pesValor}" for="pesValor" />
+                        <p:selectOneMenu id="pesValor" value="#{pessoaController.selected.pesValor}" required="true" requiredMessage="#{bundle.EditPessoaRequiredMessage_pesValor}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{valorpadraoController.itemsAvailableSelectOne}"
+                                           var="pesValorItem"
+                                           itemValue="#{pesValorItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{pessoaController.update}" value="#{bundle.Save}" update="display,:PessoaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'PessoaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PessoaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

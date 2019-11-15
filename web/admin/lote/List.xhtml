@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListLoteTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="LoteListForm">
+                <p:panel header="#{bundle.ListLoteTitle}">
+                    <p:dataTable id="datalist" value="#{loteController.items}" var="item"
+                                 selectionMode="single" selection="#{loteController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.loteCodigo}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLoteTitle_loteCodigo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.loteCodigo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLoteTitle_loteNome}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.loteNome}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLoteTitle_lotePessoa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.lotePessoa}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLoteTitle_loteRua}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.loteRua}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLoteTitle_loteValor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.loteValor}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{loteController.prepareCreate}" update=":LoteCreateForm" oncomplete="PF('LoteCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":LoteViewForm" oncomplete="PF('LoteViewDialog').show()" disabled="#{empty loteController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":LoteEditForm" oncomplete="PF('LoteEditDialog').show()" disabled="#{empty loteController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{loteController.destroy}" update=":growl,datalist" disabled="#{empty loteController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

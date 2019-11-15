@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LoteEditDlg" widgetVar="LoteEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditLoteTitle}">
+            <h:form id="LoteEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{loteController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditLoteLabel_loteCodigo}" for="loteCodigo" />
+                        <p:inputText id="loteCodigo" value="#{loteController.selected.loteCodigo}" title="#{bundle.EditLoteTitle_loteCodigo}" required="true" requiredMessage="#{bundle.EditLoteRequiredMessage_loteCodigo}"/>
+                        <p:outputLabel value="#{bundle.EditLoteLabel_loteNome}" for="loteNome" />
+                        <p:inputText id="loteNome" value="#{loteController.selected.loteNome}" title="#{bundle.EditLoteTitle_loteNome}" required="true" requiredMessage="#{bundle.EditLoteRequiredMessage_loteNome}"/>
+                        <p:outputLabel value="#{bundle.EditLoteLabel_lotePessoa}" for="lotePessoa" />
+                        <p:selectOneMenu id="lotePessoa" value="#{loteController.selected.lotePessoa}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{pessoaController.itemsAvailableSelectOne}"
+                                           var="lotePessoaItem"
+                                           itemValue="#{lotePessoaItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditLoteLabel_loteRua}" for="loteRua" />
+                        <p:selectOneMenu id="loteRua" value="#{loteController.selected.loteRua}" required="true" requiredMessage="#{bundle.EditLoteRequiredMessage_loteRua}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{ruaController.itemsAvailableSelectOne}"
+                                           var="loteRuaItem"
+                                           itemValue="#{loteRuaItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditLoteLabel_loteValor}" for="loteValor" />
+                        <p:selectOneMenu id="loteValor" value="#{loteController.selected.loteValor}" required="true" requiredMessage="#{bundle.EditLoteRequiredMessage_loteValor}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{valorpadraoController.itemsAvailableSelectOne}"
+                                           var="loteValorItem"
+                                           itemValue="#{loteValorItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{loteController.update}" value="#{bundle.Save}" update="display,:LoteListForm:datalist,:growl" oncomplete="handleSubmit(args, 'LoteEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="LoteEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

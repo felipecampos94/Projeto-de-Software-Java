@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DependenteViewDlg" widgetVar="DependenteViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewDependenteTitle}">
+            <h:form id="DependenteViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{dependenteController.selected != null}">
+                        <h:outputText value="#{bundle.ViewDependenteLabel_depCodigo}"/>
+                        <h:outputText value="#{dependenteController.selected.depCodigo}" title="#{bundle.ViewDependenteTitle_depCodigo}"/>
+                        <h:outputText value="#{bundle.ViewDependenteLabel_depNome}"/>
+                        <h:outputText value="#{dependenteController.selected.depNome}" title="#{bundle.ViewDependenteTitle_depNome}"/>
+                        <h:outputText value="#{bundle.ViewDependenteLabel_depDatanascimento}"/>
+                        <h:outputText value="#{dependenteController.selected.depDatanascimento}" title="#{bundle.ViewDependenteTitle_depDatanascimento}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewDependenteLabel_depRua}"/>
+                        <h:outputText value="#{dependenteController.selected.depRua}" title="#{bundle.ViewDependenteTitle_depRua}"/>
+                        <h:outputText value="#{bundle.ViewDependenteLabel_depNumero}"/>
+                        <h:outputText value="#{dependenteController.selected.depNumero}" title="#{bundle.ViewDependenteTitle_depNumero}"/>
+                        <h:outputText value="#{bundle.ViewDependenteLabel_depBairro}"/>
+                        <h:outputText value="#{dependenteController.selected.depBairro}" title="#{bundle.ViewDependenteTitle_depBairro}"/>
+                        <h:outputText value="#{bundle.ViewDependenteLabel_depTelefone}"/>
+                        <h:outputText value="#{dependenteController.selected.depTelefone}" title="#{bundle.ViewDependenteTitle_depTelefone}"/>
+                        <h:outputText value="#{bundle.ViewDependenteLabel_depSexo}"/>
+                        <h:outputText value="#{dependenteController.selected.depSexo}" title="#{bundle.ViewDependenteTitle_depSexo}"/>
+                        <h:outputText value="#{bundle.ViewDependenteLabel_depCidade}"/>
+                        <h:outputText value="#{dependenteController.selected.depCidade}" title="#{bundle.ViewDependenteTitle_depCidade}"/>
+                        <h:outputText value="#{bundle.ViewDependenteLabel_depPessoa}"/>
+                        <h:outputText value="#{dependenteController.selected.depPessoa}" title="#{bundle.ViewDependenteTitle_depPessoa}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="DependenteViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

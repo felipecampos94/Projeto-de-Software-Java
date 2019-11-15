@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PiqueteCreateDlg" widgetVar="PiqueteCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreatePiqueteTitle}">
+            <h:form id="PiqueteCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{piqueteController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreatePiqueteLabel_piqCodigo}" for="piqCodigo" />
+                        <p:inputText id="piqCodigo" value="#{piqueteController.selected.piqCodigo}" title="#{bundle.CreatePiqueteTitle_piqCodigo}" required="true" requiredMessage="#{bundle.CreatePiqueteRequiredMessage_piqCodigo}"/>
+                        <p:outputLabel value="#{bundle.CreatePiqueteLabel_piqNome}" for="piqNome" />
+                        <p:inputText id="piqNome" value="#{piqueteController.selected.piqNome}" title="#{bundle.CreatePiqueteTitle_piqNome}" required="true" requiredMessage="#{bundle.CreatePiqueteRequiredMessage_piqNome}"/>
+                        <p:outputLabel value="#{bundle.CreatePiqueteLabel_piqDescricao}" for="piqDescricao" />
+                        <p:inputText id="piqDescricao" value="#{piqueteController.selected.piqDescricao}" title="#{bundle.CreatePiqueteTitle_piqDescricao}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{piqueteController.create}" value="#{bundle.Save}" update="display,:PiqueteListForm:datalist,:growl" oncomplete="handleSubmit(args,'PiqueteCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PiqueteCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CtgViewDlg" widgetVar="CtgViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewCtgTitle}">
+            <h:form id="CtgViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{ctgController.selected != null}">
+                        <h:outputText value="#{bundle.ViewCtgLabel_ctgCodigo}"/>
+                        <h:outputText value="#{ctgController.selected.ctgCodigo}" title="#{bundle.ViewCtgTitle_ctgCodigo}"/>
+                        <h:outputText value="#{bundle.ViewCtgLabel_ctgNome}"/>
+                        <h:outputText value="#{ctgController.selected.ctgNome}" title="#{bundle.ViewCtgTitle_ctgNome}"/>
+                        <h:outputText value="#{bundle.ViewCtgLabel_ctgCnpj}"/>
+                        <h:outputText value="#{ctgController.selected.ctgCnpj}" title="#{bundle.ViewCtgTitle_ctgCnpj}"/>
+                        <h:outputText value="#{bundle.ViewCtgLabel_ctgRua}"/>
+                        <h:outputText value="#{ctgController.selected.ctgRua}" title="#{bundle.ViewCtgTitle_ctgRua}"/>
+                        <h:outputText value="#{bundle.ViewCtgLabel_ctgNumero}"/>
+                        <h:outputText value="#{ctgController.selected.ctgNumero}" title="#{bundle.ViewCtgTitle_ctgNumero}"/>
+                        <h:outputText value="#{bundle.ViewCtgLabel_ctgBairro}"/>
+                        <h:outputText value="#{ctgController.selected.ctgBairro}" title="#{bundle.ViewCtgTitle_ctgBairro}"/>
+                        <h:outputText value="#{bundle.ViewCtgLabel_ctgComplemento}"/>
+                        <h:outputText value="#{ctgController.selected.ctgComplemento}" title="#{bundle.ViewCtgTitle_ctgComplemento}"/>
+                        <h:outputText value="#{bundle.ViewCtgLabel_ctgTelefone}"/>
+                        <h:outputText value="#{ctgController.selected.ctgTelefone}" title="#{bundle.ViewCtgTitle_ctgTelefone}"/>
+                        <h:outputText value="#{bundle.ViewCtgLabel_ctgEmail}"/>
+                        <h:outputText value="#{ctgController.selected.ctgEmail}" title="#{bundle.ViewCtgTitle_ctgEmail}"/>
+                        <h:outputText value="#{bundle.ViewCtgLabel_ctgCidade}"/>
+                        <h:outputText value="#{ctgController.selected.ctgCidade}" title="#{bundle.ViewCtgTitle_ctgCidade}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="CtgViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

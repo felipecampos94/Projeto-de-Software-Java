@@ -23,13 +23,13 @@
                         <p:outputLabel value="#{bundle.CreatePessoaLabel_pesBairro}" for="pesBairro" />
                         <p:inputText id="pesBairro" value="#{pessoaController.selected.pesBairro}" title="#{bundle.CreatePessoaTitle_pesBairro}" />
                         <p:outputLabel value="#{bundle.CreatePessoaLabel_pesTelefone}" for="pesTelefone" />
-                        <p:inputText id="pesTelefone" value="#{pessoaController.selected.pesTelefone}" title="#{bundle.CreatePessoaTitle_pesTelefone}"/>
+                        <p:inputMask mask="(54)99999-9999" id="pesTelefone" value="#{pessoaController.selected.pesTelefone}" title="#{bundle.CreatePessoaTitle_pesTelefone}"/>
                         <p:outputLabel value="#{bundle.CreatePessoaLabel_pesSexo}" for="pesSexo" />
                         <p:inputText id="pesSexo" value="#{pessoaController.selected.pesSexo}" title="#{bundle.CreatePessoaTitle_pesSexo}" />
                         <p:outputLabel value="#{bundle.CreatePessoaLabel_pesCpf}" for="pesCpf" />
-                        <p:inputText id="pesCpf" value="#{pessoaController.selected.pesCpf}" title="#{bundle.CreatePessoaTitle_pesCpf}" required="true" requiredMessage="#{bundle.CreatePessoaRequiredMessage_pesCpf}"/>
+                        <p:inputMask mask="999.999.999-99" id="pesCpf" value="#{pessoaController.selected.pesCpf}" title="#{bundle.CreatePessoaTitle_pesCpf}" required="true" requiredMessage="#{bundle.CreatePessoaRequiredMessage_pesCpf}"/>
                         <p:outputLabel value="#{bundle.CreatePessoaLabel_pesRg}" for="pesRg" />
-                        <p:inputText id="pesRg" value="#{pessoaController.selected.pesRg}" title="#{bundle.CreatePessoaTitle_pesRg}" required="true" requiredMessage="#{bundle.CreatePessoaRequiredMessage_pesRg}"/>
+                        <p:inputMask mask="9999999999" id="pesRg" value="#{pessoaController.selected.pesRg}" title="#{bundle.CreatePessoaTitle_pesRg}" required="true" requiredMessage="#{bundle.CreatePessoaRequiredMessage_pesRg}"/>
                         <p:outputLabel value="#{bundle.CreatePessoaLabel_pesEmail}" for="pesEmail" />
                         <p:inputText id="pesEmail" value="#{pessoaController.selected.pesEmail}" title="#{bundle.CreatePessoaTitle_pesEmail}" />
                         <p:outputLabel value="#{bundle.CreatePessoaLabel_pesProfissao}" for="pesProfissao" />

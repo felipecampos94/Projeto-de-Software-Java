@@ -143,7 +143,7 @@ public class Lote implements Serializable {
 
     @Override
     public String toString() {
-        return "br.upf.ads.entity.Lote[ loteCodigo=" + loteCodigo + " ]";
+        return loteNome;
     }
     
 }

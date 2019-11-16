@@ -151,7 +151,7 @@ public class Formapagamento implements Serializable {
 
     @Override
     public String toString() {
-        return "br.upf.ads.entity.Formapagamento[ fpgCodigo=" + fpgCodigo + " ]";
+        return fpgNome;
     }
     
 }

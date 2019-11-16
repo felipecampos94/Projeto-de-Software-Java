@@ -16,7 +16,7 @@
                         <h:outputText value="#{parcelaController.selected.parcCodigo}" title="#{bundle.ViewParcelaTitle_parcCodigo}"/>
                         <h:outputText value="#{bundle.ViewParcelaLabel_parcDatapagamento}"/>
                         <h:outputText value="#{parcelaController.selected.parcDatapagamento}" title="#{bundle.ViewParcelaTitle_parcDatapagamento}">
-                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
                         </h:outputText>
                         <h:outputText value="#{bundle.ViewParcelaLabel_parcAnoreferencia}"/>
                         <h:outputText value="#{parcelaController.selected.parcAnoreferencia}" title="#{bundle.ViewParcelaTitle_parcAnoreferencia}"/>
@@ -26,18 +26,18 @@
                         <h:outputText value="#{parcelaController.selected.parcQtdparcela}" title="#{bundle.ViewParcelaTitle_parcQtdparcela}"/>
                         <h:outputText value="#{bundle.ViewParcelaLabel_parcDatavencimento}"/>
                         <h:outputText value="#{parcelaController.selected.parcDatavencimento}" title="#{bundle.ViewParcelaTitle_parcDatavencimento}">
-                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
                         </h:outputText>
                         <h:outputText value="#{bundle.ViewParcelaLabel_parcValorparcela}"/>
                         <h:outputText value="#{parcelaController.selected.parcValorparcela}" title="#{bundle.ViewParcelaTitle_parcValorparcela}"/>
                         <h:outputText value="#{bundle.ViewParcelaLabel_parcSituacao}"/>
                         <h:outputText value="#{parcelaController.selected.parcSituacao}" title="#{bundle.ViewParcelaTitle_parcSituacao}"/>
                         <h:outputText value="#{bundle.ViewParcelaLabel_parcFormapagamento}"/>
-                        <h:outputText value="#{parcelaController.selected.parcFormapagamento}" title="#{bundle.ViewParcelaTitle_parcFormapagamento}"/>
+                        <h:outputText value="#{parcelaController.selected.parcFormapagamento.fpgNome}" title="#{bundle.ViewParcelaTitle_parcFormapagamento}"/>
                         <h:outputText value="#{bundle.ViewParcelaLabel_parcLote}"/>
-                        <h:outputText value="#{parcelaController.selected.parcLote}" title="#{bundle.ViewParcelaTitle_parcLote}"/>
+                        <h:outputText value="#{parcelaController.selected.parcLote.loteNome}" title="#{bundle.ViewParcelaTitle_parcLote}"/>
                         <h:outputText value="#{bundle.ViewParcelaLabel_parcPessoa}"/>
-                        <h:outputText value="#{parcelaController.selected.parcPessoa}" title="#{bundle.ViewParcelaTitle_parcPessoa}"/>
+                        <h:outputText value="#{parcelaController.selected.parcPessoa.pesNome}" title="#{bundle.ViewParcelaTitle_parcPessoa}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="ParcelaViewDialog.hide()"/>
                 </h:panelGroup>

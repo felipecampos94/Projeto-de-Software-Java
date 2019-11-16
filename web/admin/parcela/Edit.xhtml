@@ -36,14 +36,14 @@
                                            itemValue="#{parcFormapagamentoItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.EditParcelaLabel_parcLote}" for="parcLote" />
-                        <p:selectOneMenu id="parcLote" value="#{parcelaController.selected.parcLote}" >
+                        <p:selectOneMenu id="parcLote" value="#{parcelaController.selected.parcLote}" disabled="true" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{loteController.itemsAvailableSelectOne}"
                                            var="parcLoteItem"
                                            itemValue="#{parcLoteItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.EditParcelaLabel_parcPessoa}" for="parcPessoa" />
-                        <p:selectOneMenu id="parcPessoa" value="#{parcelaController.selected.parcPessoa}" >
+                        <p:selectOneMenu id="parcPessoa" value="#{parcelaController.selected.parcPessoa}" disabled="true" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{pessoaController.itemsAvailableSelectOne}"
                                            var="parcPessoaItem"

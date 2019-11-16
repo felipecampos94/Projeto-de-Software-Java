@@ -27,6 +27,6 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>faces/admin/parcela/List.xhtml</welcome-file>
+        <welcome-file>faces/admin/parcela/List-parcela.xhtml</welcome-file>
     </welcome-file-list>
 </web-app>

@@ -19,6 +19,12 @@
                     text-align: right !important;
                 }
             </style>
+
+            <div class="ui-g">
+                <div class="ui-g-12">
+                    <p:staticMessage severity="Info" summary="INFO!" detail="Para Ver, Editar ou Excluir é necessário selecionar um item na lista!" />
+                </div>
+            </div>
             <h:form id="PessoaListForm">
                 <p:panel header="#{bundle.ListPessoaTitle}">
                     <p:dataTable id="datalist" value="#{pessoaController.items}" var="item"

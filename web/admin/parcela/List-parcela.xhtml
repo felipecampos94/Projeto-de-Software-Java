@@ -19,6 +19,11 @@
                     text-align: right !important;
                 }
             </style>
+            <div class="ui-g">
+                <div class="ui-g-12">
+                    <p:staticMessage severity="Info" summary="INFO!" detail="Para Receber, Suspender, Ver ou Gerar Recibo é necessário selecionar um item na lista!" />
+                </div>
+            </div>
             <h:form>
                 <p:menuButton value="Opções">
                     <p:menuitem id="createButton" value="Gerar Parcela" actionListener="#{parcelaController.prepareCreate}" update=":ParcelaCreateForm" oncomplete="PF('ParcelaCreateDialog').show()" icon="fa fa-plus"/>
@@ -35,8 +40,8 @@
                                  rowsPerPageTemplate="10,20,30,40,50"
                                  >
 
-                        <p:ajax event="rowSelect"   update="viewButton reciboButton deleteButton"/>
-                        <p:ajax event="rowUnselect" update="viewButton reciboButton deleteButton"/>
+                        <p:ajax event="rowSelect"   update="viewButton reciboButton suspenderButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="viewButton reciboButton suspenderButton deleteButton"/>
 
                         <f:facet name="header">
                             <p:outputPanel>
@@ -91,7 +96,7 @@
                                 <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="fa fa-times" />
                             </p:confirmDialog>
 
-                            <p:commandButton id="suspenderButton" icon="fa fa-minus"  value="Suspender" actionListener="#" update=":growl,datalist" disabled="#{empty parcelaController.selected}">
+                            <p:commandButton id="suspenderButton" icon="fa fa-minus"  value="Suspender" actionListener="#" disabled="#{empty parcelaController.selected}">
                                 <p:confirm header="CONFIRMAÇÃO" message="Deseja Realizar a Suspensão dessa Parcela?" icon="fa fa-exclamation-triangle" />
                             </p:commandButton>
                             <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
